@@ -61,6 +61,7 @@
 # Скриншоты
 <img width="492" height="870" alt="image" src="https://github.com/user-attachments/assets/d36f76ad-07aa-4fbd-8b4e-3575e95a4c19" />
 
+
 <img width="514" height="868" alt="image" src="https://github.com/user-attachments/assets/df09fdfe-94f1-46c9-ab70-fd846786ea2b" />
 
 # Технологический стек

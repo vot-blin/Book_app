@@ -64,6 +64,8 @@
 
 <img width="514" height="868" alt="image" src="https://github.com/user-attachments/assets/df09fdfe-94f1-46c9-ab70-fd846786ea2b" />
 
+<img width="547" height="853" alt="image" src="https://github.com/user-attachments/assets/9b3966d7-69c1-4727-9650-8cb54cedd6d1" />
+
 # Технологический стек
 Backend на C#
 

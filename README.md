@@ -59,7 +59,9 @@
 - Быстрый доступ к "текущей книге" (книгам в статусе "Читаю").
 
 # Скриншоты
-<https://www.figma.com/design/ff2JG1oQ2uip128M7UP9Ee/Untitled?node-id=1-2&t=kjVFVj8YLdm8JAe5-1/>
+<img width="492" height="870" alt="image" src="https://github.com/user-attachments/assets/d36f76ad-07aa-4fbd-8b4e-3575e95a4c19" />
+
+<img width="514" height="868" alt="image" src="https://github.com/user-attachments/assets/df09fdfe-94f1-46c9-ab70-fd846786ea2b" />
 
 # Технологический стек
 Backend на C#

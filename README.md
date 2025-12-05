@@ -68,3 +68,5 @@ Frontend на Flutter
 База данных PostgreSQL
 
 CRUD и работа с БД Entity Framework 
+
+REST API

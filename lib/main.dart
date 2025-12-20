@@ -1,4 +1,4 @@
-import 'package:bookhouse_app/edit_book_page.dart';
+import 'package:bookhouse_app/first_page.dart';
 import 'package:flutter/material.dart';
 import 'app_page.dart';
 
@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Bookhouse',
       theme: ThemeData(primarySwatch: Colors.blue, fontFamily: 'Inter'),
-      home: const EditBookPage(),
+      home: const LoginPage(),
       debugShowCheckedModeBanner: false,
     );
   }
@@ -99,10 +99,10 @@ class LoginPage extends StatelessWidget {
               // Кнопка Войти
               ElevatedButton(
                 onPressed: () {
-                  // Здесь позже будет логика входа через бэкенд
-                  ScaffoldMessenger.of(
+                  Navigator.push(
                     context,
-                  ).showSnackBar(const SnackBar(content: Text('Вход...')));
+                    MaterialPageRoute(builder: (context) => const FirstPage()),
+                  );
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Color(0xFF0D99FF),

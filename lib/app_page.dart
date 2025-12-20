@@ -1,3 +1,4 @@
+import 'package:bookhouse_app/first_page.dart';
 import 'package:flutter/material.dart';
 
 class RegisterPage extends StatelessWidget {
@@ -92,10 +93,10 @@ class RegisterPage extends StatelessWidget {
               // Кнопка Войти
               ElevatedButton(
                 onPressed: () {
-                  // Здесь позже будет логика входа через бэкенд
-                  ScaffoldMessenger.of(
+                  Navigator.push(
                     context,
-                  ).showSnackBar(const SnackBar(content: Text('Вход...')));
+                    MaterialPageRoute(builder: (context) => const FirstPage()),
+                  );
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Color(0xFF0D99FF),

@@ -1,3 +1,4 @@
+import 'package:bookhouse_app/second_page.dart';
 import 'package:flutter/material.dart';
 
 class BookPage extends StatelessWidget {
@@ -50,59 +51,76 @@ class BookPage extends StatelessWidget {
         ),
         elevation: 0,
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(24.0),
-        child: Column(
-          children: [
-            // Кнопка "Назад" слева вверху
-            Align(
-              alignment: Alignment.topLeft,
-              child: IconButton(
-                icon: const Icon(Icons.arrow_back, color: Colors.black),
-                onPressed: () {
-                  Navigator.pop(context); // ← возвращаемся назад
-                },
-              ),
-            ),
+      body: Stack(
+        children: [
+          // Основной контент — по центру
+          Center(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 24.0),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Center(
+                    child: Text(
+                      bookTitle,
+                      style: const TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.normal,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 70),
 
-            Center(
-              child: Text(
-                bookTitle,
-                style: const TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.normal,
-                ),
-              ),
-            ),
-            const SizedBox(height: 76),
+                  // Обложка книги
+                  Container(
+                    width: 250,
+                    height: 400,
+                    decoration: BoxDecoration(
+                      color: Colors.grey[200],
+                      border: Border.all(color: Colors.grey[300]!),
+                    ),
+                    child: Image.network(
+                      coverImageUrl,
+                      fit: BoxFit.contain,
+                      errorBuilder: (context, error, stackTrace) {
+                        return Container(
+                          color: Colors.grey[200],
+                          child: const Center(
+                            child: Text('Обложка не загружена'),
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                  const SizedBox(height: 100),
 
-            // Обложка книги (загружается из базы)
-            Container(
-              width: 250,
-              height: 350,
-              decoration: BoxDecoration(
-                border: Border.all(color: Colors.grey[300]!, width: 2),
-              ),
-              child: Image.network(
-                coverImageUrl,
-                fit: BoxFit.contain,
-                errorBuilder: (context, error, stackTrace) {
-                  // Если изображение не загрузилось — показываем плейсхолдер
-                  return Container(
-                    color: Colors.grey[200],
-                    child: const Center(child: Text('Обложка не загружена')),
-                  );
-                },
+                  Text(
+                    '1',
+                    style: const TextStyle(fontSize: 24, color: Colors.grey),
+                  ),
+                ],
               ),
             ),
-            const SizedBox(height: 140),
+          ),
 
-            Text(
-              '1', // можно сделать динамическим позже
-              style: const TextStyle(fontSize: 24, color: Colors.grey),
+          // Стрелка — слева от обложки
+          Positioned(
+            top: 40, // примерно на уровне верхней части обложки
+            left: 10, // отступ от левого края экрана
+            child: IconButton(
+              icon: const Icon(Icons.arrow_back, color: Colors.black, size: 36),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const SecondPage(), // ← переход
+                  ),
+                );
+              },
+              padding: EdgeInsets.zero,
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

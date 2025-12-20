@@ -1,3 +1,4 @@
+import 'package:bookhouse_app/first_page.dart';
 import 'package:bookhouse_app/password_page.dart';
 import 'package:flutter/material.dart';
 
@@ -10,16 +11,25 @@ class ProfilePage extends StatelessWidget {
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Color(0xFF0D99FF),
-        toolbarHeight: 130, // твой цвет #0D99FF
+        toolbarHeight: 130,
+        automaticallyImplyLeading: false,
         title: Padding(
           padding: const EdgeInsets.only(top: 50),
           child: Row(
             children: [
-              Image.asset(
-                'assets/Vector.png',
-                width: 50,
-                height: 50,
-                color: Colors.white,
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const FirstPage()),
+                  );
+                },
+                child: Image.asset(
+                  'assets/Vector.png',
+                  width: 50,
+                  height: 50,
+                  color: Colors.white,
+                ),
               ),
               const SizedBox(width: 40),
               const Text(
@@ -123,7 +133,10 @@ class ProfilePage extends StatelessWidget {
                   // Можно очистить токен, перейти на страницу входа
                   Navigator.popUntil(context, ModalRoute.withName('/'));
                   ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('Вы вышли из аккаунта')),
+                    const SnackBar(
+                      content: Text('Вы вышли из аккаунта'),
+                      backgroundColor: Color(0xFF0D99FF),
+                    ),
                   );
                 },
                 style: ElevatedButton.styleFrom(

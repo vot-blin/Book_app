@@ -76,10 +76,12 @@ class PasswordPage extends StatelessWidget {
               alignment: Alignment.bottomCenter,
               child: ElevatedButton(
                 onPressed: () {
-                  // Здесь можно добавить логику изменения пароля
                   Navigator.pop(context);
                   ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('Пароль изменён')),
+                    const SnackBar(
+                      content: Text('Пароль изменён'),
+                      backgroundColor: Color(0xFF0D99FF),
+                    ),
                   );
                 },
                 style: ElevatedButton.styleFrom(

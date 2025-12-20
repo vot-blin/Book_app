@@ -1,15 +1,16 @@
-import 'package:bookhouse_app/info_page.dart';
+import 'package:bookhouse_app/second_page.dart';
 import 'package:flutter/material.dart';
-import 'profile_page.dart';
 
-class EditBookPage extends StatelessWidget {
-  final String coverImageUrl;
+class AddBookPage extends StatefulWidget {
+  const AddBookPage({super.key});
 
-  const EditBookPage({
-    super.key,
-    this.coverImageUrl =
-        'https://via.placeholder.com/250x350/0D99FF/FFFFFF?text=Обложка',
-  });
+  @override
+  State<AddBookPage> createState() => _AddBookPageState();
+}
+
+class _AddBookPageState extends State<AddBookPage> {
+  String status = 'Читаю';
+  String collection = 'Классика';
 
   @override
   Widget build(BuildContext context) {
@@ -39,22 +40,11 @@ class EditBookPage extends StatelessWidget {
                 ),
               ),
               const Spacer(),
-              // Внутри Row в AppBar -> title
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const ProfilePage(),
-                    ),
-                  );
-                },
-                child: Image.asset(
-                  'assets/profile.png',
-                  width: 50,
-                  height: 50,
-                  color: Colors.white,
-                ),
+              Image.asset(
+                'assets/profile.png',
+                width: 50,
+                height: 50,
+                color: Colors.white,
               ),
             ],
           ),
@@ -66,7 +56,7 @@ class EditBookPage extends StatelessWidget {
         children: [
           Center(
             child: Text(
-              'Редактировать книгу',
+              'Добавить книгу',
               style: const TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.normal,
@@ -75,25 +65,26 @@ class EditBookPage extends StatelessWidget {
           ),
           const SizedBox(height: 29),
 
-          // Обложка книги (загружается из базы)
           Center(
-            child: SizedBox(
-              width: 225,
-              height: 260,
+            child: GestureDetector(
+              onTap: () {},
               child: Container(
+                width: 225,
+                height: 260,
                 decoration: BoxDecoration(
+                  color: Colors.grey[200],
                   border: Border.all(color: Colors.grey[300]!),
                 ),
-                child: Image.network(
-                  coverImageUrl,
-                  fit: BoxFit.contain,
-                  errorBuilder: (context, error, stackTrace) {
-                    // Если изображение не загрузилось — показываем плейсхолдер
-                    return Container(
-                      color: Colors.grey[200],
-                      child: const Center(child: Text('Обложка не загружена')),
-                    );
-                  },
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: const [
+                    Text(
+                      'Загрузить обложку',
+                      style: TextStyle(color: Colors.black, fontSize: 20),
+                    ),
+                    Icon(Icons.add, size: 40, color: Colors.black),
+                    SizedBox(height: 0),
+                  ],
                 ),
               ),
             ),
@@ -102,6 +93,7 @@ class EditBookPage extends StatelessWidget {
 
           TextField(
             decoration: InputDecoration(
+              labelText: 'Укажите автора',
               contentPadding: const EdgeInsets.symmetric(
                 vertical: 14,
                 horizontal: 16,
@@ -119,6 +111,7 @@ class EditBookPage extends StatelessWidget {
           const SizedBox(height: 31),
           TextField(
             decoration: InputDecoration(
+              labelText: 'Укажите название',
               contentPadding: const EdgeInsets.symmetric(
                 vertical: 14,
                 horizontal: 16,
@@ -187,10 +180,10 @@ class EditBookPage extends StatelessWidget {
           ),
           const SizedBox(height: 31),
           TextField(
-            maxLines: null, // ← позволяет неограниченное количество строк
-            minLines: 1, // ← но начинается с одной строки
-            expands: false, // ← важно: не используй expands: true
+            maxLines: null,
+            minLines: 3,
             decoration: InputDecoration(
+              labelText: 'Аннотация (необязательно)',
               contentPadding: const EdgeInsets.symmetric(
                 vertical: 14,
                 horizontal: 16,
@@ -205,20 +198,20 @@ class EditBookPage extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(height: 31),
 
+          const SizedBox(height: 31),
           Center(
             child: ElevatedButton(
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const InfoPage()),
+                  MaterialPageRoute(builder: (context) => const SecondPage()),
                 );
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: Color(0xFF0D99FF),
                 padding: const EdgeInsets.symmetric(
-                  horizontal: 123,
+                  horizontal: 142,
                   vertical: 12,
                 ),
                 shape: RoundedRectangleBorder(
@@ -226,7 +219,7 @@ class EditBookPage extends StatelessWidget {
                 ),
               ),
               child: const Text(
-                'Редактировать',
+                'Добавить',
                 style: TextStyle(color: Colors.white),
               ),
             ),
